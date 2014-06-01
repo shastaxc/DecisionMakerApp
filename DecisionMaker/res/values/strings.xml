@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">Decision Maker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string android:id="@+id/title" name="title" android:layout_width="wrap_content" android:layout_height="wrap_content">Decision Maker</string>
+    <string android:id="@+id/begin" name="begin" android:layout_width="wrap_content" android:layout_height="wrap_content">Begin</string>
+    <string name="title_activity_randomize">Randomize</string>
+    <color name="black">#000000</color>
+    <string name="roll">Roll</string>
+    <string name="hint">Enter Choices</string>
+    <string name="arrow">&gt;</string>
+    <color name="light_gray">#BBBBBB</color>
+    <color name="white">#FFFFFF</color>
+    <string name="test">test</string>
+    <string name="clear">Clear List</string>
+
+</resources>
