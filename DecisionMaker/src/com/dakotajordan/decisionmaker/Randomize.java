@@ -65,6 +65,8 @@ public class Randomize extends ActionBarActivity {
 	    final SwipeDetector swipeDetector = new SwipeDetector();
 	    //For use with context menu commands
 	    private String selectedWord;
+	    //Declare global toast variable
+		private Toast toast;
 	    
 	    @Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,6 +77,8 @@ public class Randomize extends ActionBarActivity {
             populateListView(rootView);
             registerClickCallback();
             registerForContextMenu((ListView)rootView.findViewById(R.id.listChoices));
+           
+            toast = new Toast(getActivity().getApplicationContext());
             
 			Button btnClear = (Button)rootView.findViewById(R.id.btnClear);
 			btnClear.setOnClickListener(this);
@@ -122,8 +126,17 @@ public class Randomize extends ActionBarActivity {
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
 			
 			if(!adapterList.isEmpty()){
-				//Randomly select one of the choices and return its index in adapterList
-				selection = Selector.makeChoice();
+				final int previousSelection = selection;
+				if(adapterList.getCount() > 1){
+					//Loop so that the same selection is never made twice in a row
+					while(selection == previousSelection){
+						//Randomly select one of the choices and return its index in adapterList
+						selection = Selector.makeChoice();
+					}
+				}
+				else{
+					selection = 0;
+				}
 				//Retrieve the layout inflator
 				LayoutInflater inflater = getActivity().getLayoutInflater();
 				//Assign the custom layout to view
@@ -132,14 +145,9 @@ public class Randomize extends ActionBarActivity {
 				View layout = inflater.inflate(R.layout.toast_custom_layout,
 				            (ViewGroup) getActivity().findViewById(R.id.toast_layout_root));
 				//Return the application context
-				Toast toast = new Toast(getActivity().getApplicationContext());
-				
 				TextView text = (TextView) layout.findViewById(R.id.textView1);
 				text.setText(adapterList.getItem(selection));
-				
-				//Set toast gravity to bottom
 				toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-				//Set toast duration
 				toast.setDuration(Toast.LENGTH_SHORT);
 				//Set the custom layout to Toast
 				toast.setView(layout);
@@ -152,6 +160,7 @@ public class Randomize extends ActionBarActivity {
 			adapterList.clear();
 		    adapterList.notifyDataSetChanged();
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
+			toast.cancel();
 			hideKeyboard(getView().getWindowToken());
 		}
 		

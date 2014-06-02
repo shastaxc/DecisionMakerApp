@@ -1092,13 +1092,12 @@ containing a value of this type.
         public static final int custom_begin_button=0x7f02005f;
         public static final int custom_roll_button=0x7f020060;
         public static final int ic_launcher=0x7f020061;
-        public static final int item_selector_focused=0x7f020062;
-        public static final int item_selector_pressed=0x7f020063;
-        public static final int item_selector_unpressed=0x7f020064;
-        public static final int list_selector=0x7f020065;
-        public static final int passive_item_background=0x7f020066;
-        public static final int roll_pressed=0x7f020067;
-        public static final int roll_unpressed=0x7f020068;
+        public static final int item_pressed=0x7f020062;
+        public static final int item_unpressed=0x7f020063;
+        public static final int list_selector=0x7f020064;
+        public static final int passive_item_background=0x7f020065;
+        public static final int roll_pressed=0x7f020066;
+        public static final int roll_unpressed=0x7f020067;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
