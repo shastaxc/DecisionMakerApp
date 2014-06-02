@@ -1,6 +1,7 @@
 package com.dakotajordan.decisionmaker;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity{
 	
@@ -52,6 +54,10 @@ public class MainActivity extends ActionBarActivity{
             
             Button start = (Button)rootView.findViewById(R.id.btnBegin);
             start.setOnClickListener(this);
+            
+            TextView txt = (TextView) rootView.findViewById(R.id.custom_font);
+            Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/BebasNeue.ttf");
+            txt.setTypeface(font);
             
             return rootView;
         }

@@ -1117,12 +1117,13 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int btnAdd=0x7f050044;
-        public static final int btnBegin=0x7f05003d;
+        public static final int btnBegin=0x7f05003e;
         public static final int btnClear=0x7f050041;
         public static final int btnRoll=0x7f050040;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f05003c;
+        public static final int custom_font=0x7f05003d;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1174,7 +1175,6 @@ containing a value of this type.
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
-        public static final int welcome=0x7f05003e;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
