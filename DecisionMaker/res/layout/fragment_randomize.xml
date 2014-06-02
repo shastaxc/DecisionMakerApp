@@ -51,6 +51,8 @@
         <EditText
             android:id="@+id/inputDecision"
             style="@style/DecisionMakerEditTextStyle"
+            android:paddingLeft="5dp"
+            android:gravity="left|center_vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
@@ -80,18 +82,18 @@
         android:layout_alignParentTop="true"
     	android:clickable="true"
     	android:focusableInTouchMode="true"
-        android:background="#636363"
+        android:background="#111111"
         android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listChoices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:fadingEdgeLength="20dp"
+            android:listSelector="@drawable/list_selector"
     		android:clickable="true"
-    		android:focusableInTouchMode="true"
-            android:divider="@color/light_gray"
-            android:dividerHeight="1dp" >
+    		android:focusableInTouchMode="true" >
 
         </ListView>
 

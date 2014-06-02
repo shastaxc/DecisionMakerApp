@@ -863,6 +863,7 @@ containing a value of this type.
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
         public static final int black=0x7f070003;
+        public static final int item_textcolor_selector=0x7f070007;
         public static final int light_gray=0x7f070004;
         public static final int white=0x7f070005;
     }
@@ -1091,8 +1092,13 @@ containing a value of this type.
         public static final int custom_begin_button=0x7f02005f;
         public static final int custom_roll_button=0x7f020060;
         public static final int ic_launcher=0x7f020061;
-        public static final int roll_pressed=0x7f020062;
-        public static final int roll_unpressed=0x7f020063;
+        public static final int item_selector_focused=0x7f020062;
+        public static final int item_selector_pressed=0x7f020063;
+        public static final int item_selector_unpressed=0x7f020064;
+        public static final int list_selector=0x7f020065;
+        public static final int passive_item_background=0x7f020066;
+        public static final int roll_pressed=0x7f020067;
+        public static final int roll_unpressed=0x7f020068;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1106,7 +1112,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050049;
+        public static final int action_settings=0x7f05004a;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1161,9 +1167,10 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int textView1=0x7f050048;
+        public static final int text=0x7f050047;
+        public static final int textView1=0x7f050049;
         public static final int title=0x7f05002b;
-        public static final int toast_layout_root=0x7f050047;
+        public static final int toast_layout_root=0x7f050048;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
@@ -1225,8 +1232,9 @@ containing a value of this type.
         public static final int choices_text_view=0x7f03001a;
         public static final int fragment_main=0x7f03001b;
         public static final int fragment_randomize=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
-        public static final int toast_custom_layout=0x7f03001e;
+        public static final int row_item=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int toast_custom_layout=0x7f03001f;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
