@@ -27,6 +27,10 @@
             android:label="@string/title_activity_randomize"
             android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
+        <activity
+            android:name="com.dakotajordan.decisionmaker.Ahofiwe"
+            android:label="@string/title_activity_ahofiwe" >
+        </activity>
     </application>
 
 </manifest>

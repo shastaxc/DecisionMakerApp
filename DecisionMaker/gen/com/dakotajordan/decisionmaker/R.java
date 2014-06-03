@@ -1101,6 +1101,7 @@ containing a value of this type.
         public static final int roll_unpressed=0x7f020067;
     }
     public static final class id {
+        public static final int FrameLayout1=0x7f050045;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1140,7 +1141,6 @@ containing a value of this type.
         public static final int inputDecision=0x7f050043;
         public static final int linearLayout1=0x7f05003f;
         public static final int linearLayout2=0x7f050042;
-        public static final int linearLayout3=0x7f050045;
         public static final int listChoices=0x7f050046;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
@@ -1227,18 +1227,20 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
-        public static final int activity_main=0x7f030018;
-        public static final int activity_randomize=0x7f030019;
-        public static final int choices_text_view=0x7f03001a;
-        public static final int fragment_main=0x7f03001b;
-        public static final int fragment_randomize=0x7f03001c;
-        public static final int row_item=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
-        public static final int toast_custom_layout=0x7f03001f;
+        public static final int activity_ahofiwe=0x7f030018;
+        public static final int activity_main=0x7f030019;
+        public static final int activity_randomize=0x7f03001a;
+        public static final int choices_text_view=0x7f03001b;
+        public static final int fragment_main=0x7f03001c;
+        public static final int fragment_randomize=0x7f03001d;
+        public static final int row_item=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int toast_custom_layout=0x7f030020;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
-        public static final int randomize=0x7f0c0001;
+        public static final int ahofiwe=0x7f0c0000;
+        public static final int main=0x7f0c0001;
+        public static final int randomize=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1291,6 +1293,7 @@ containing a value of this type.
         public static final int roll=0x7f0a0013;
         public static final int test=0x7f0a0016;
         public static final int title=0x7f0a0010;
+        public static final int title_activity_ahofiwe=0x7f0a0018;
         public static final int title_activity_randomize=0x7f0a0012;
     }
     public static final class style {

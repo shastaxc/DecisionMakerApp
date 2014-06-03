@@ -20,11 +20,11 @@ public class CustomAdapter extends ArrayAdapter<String> {
 		this.context1 = context;
 		this.items = items;
 	}
-	/*static class ViewHolder{
-		public TextView itemText;		
+	static class ViewHolder{
+		public TextView itemTextView;		
 	}
 	
-	@Override
+	/*@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		
 		ViewHolder holder;
@@ -47,22 +47,27 @@ public class CustomAdapter extends ArrayAdapter<String> {
 	}*/
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
+		ViewHolder holder;
         View rowView = convertView;
         if (rowView == null){
         	LayoutInflater inflater = context1.getLayoutInflater();
             rowView = inflater.inflate(R.layout.row_item, null);
+            holder = new ViewHolder();
+            //TODO: Add drawable selector to row_item.xml textview
+            holder.itemTextView = (TextView)rowView.findViewById(R.id.text);
+            holder.itemTextView.setText(items.get(position));
+            rowView.setTag(holder);
         }
-        TextView text = (TextView) rowView.findViewById(R.id.text);
-        text.setText(items.get(position));
-        if (position == Randomize.PlaceholderFragment.selection){
-            //TODO: set the proper selection color here:
-            rowView.setBackgroundResource(R.drawable.item_pressed);
-            text.setTextColor(Color.rgb(245,216,169));
+        else if (position == Randomize.PlaceholderFragment.selection){
+        	holder = (ViewHolder) rowView.getTag();
+            //set the proper selection color here:
+            //holder.itemTextView.setBackgroundResource(R.drawable.item_pressed);
+            holder.itemTextView.setTextColor(Color.rgb(245,216,169));
         }
         else{
-            rowView.setBackgroundResource(R.drawable.item_unpressed);
-            text.setTextColor(Color.WHITE);
+        	holder = (ViewHolder) rowView.getTag();
+        	//holder.itemTextView.setBackgroundResource(R.drawable.item_unpressed);
+        	holder.itemTextView.setTextColor(Color.WHITE);
         }
         
         return rowView;
