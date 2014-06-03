@@ -28,8 +28,7 @@ public class Shuffle {
 		  		selectHolder = Selector.makeChoice();
 		}
 		//Record end selection so next roll won't repeat the same value
-		Randomize.PlaceholderFragment.previousSelection = selectHolder;		
-		System.out.println("SelectHolder = " + selectHolder);
+		Randomize.PlaceholderFragment.previousSelection = selectHolder;
 		
 		//Begin rolling animation
 		for( i = 0; i < 4; i++){
