@@ -15,5 +15,6 @@
     <color name="white">#FFFFFF</color>
     <string name="test">test</string>
     <string name="clear">Clear List</string>
+    <color name="dark_orange">#EDA70E</color>
 
 </resources>

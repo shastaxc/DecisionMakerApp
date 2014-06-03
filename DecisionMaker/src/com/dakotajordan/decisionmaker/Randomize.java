@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,8 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Randomize extends ActionBarActivity {
 
@@ -59,14 +56,15 @@ public class Randomize extends ActionBarActivity {
 
 		//Declare global variables
 		private final ArrayList<String> displayList = new ArrayList<String>();
-		private static ArrayAdapter<String> adapterList;
-		private ListView list;
-		private int selection;
+		protected static ArrayAdapter<String> adapterList;
+		protected static ListView list;
+		protected static int selection = -1;
+		protected static int previousSelection = -1;
 	    final SwipeDetector swipeDetector = new SwipeDetector();
 	    //For use with context menu commands
 	    private String selectedWord;
-	    //Declare global toast variable
-		private Toast toast;
+	    //Declare global toast variable - no longer used as of v1.3
+		//private Toast toast;
 	    
 	    @Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,7 +76,8 @@ public class Randomize extends ActionBarActivity {
             registerClickCallback();
             registerForContextMenu((ListView)rootView.findViewById(R.id.listChoices));
            
-            toast = new Toast(getActivity().getApplicationContext());
+            //No longer using toasts as of v1.3
+            //toast = new Toast(getActivity().getApplicationContext());
             
 			Button btnClear = (Button)rootView.findViewById(R.id.btnClear);
 			btnClear.setOnClickListener(this);
@@ -94,6 +93,7 @@ public class Randomize extends ActionBarActivity {
 
 		@Override
 		public void onClick(View v) {
+			selection = -1;
 			switch(v.getId()){
 	    		case R.id.btnRoll:
 	    			btnRollClick();
@@ -114,8 +114,8 @@ public class Randomize extends ActionBarActivity {
 			String choice = enterChoices.getText().toString();
 			
 			adapterList.add(choice);
-		    adapterList.notifyDataSetChanged();
 		    list.setSelection(adapterList.getCount()-1);
+		    //empty edittext box
 			clear(enterChoices);
 		}
 		
@@ -126,18 +126,24 @@ public class Randomize extends ActionBarActivity {
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
 			
 			if(!adapterList.isEmpty()){
-				final int previousSelection = selection;
+				previousSelection = selection;
 				if(adapterList.getCount() > 1){
+					Shuffle.shuffleItems();
 					//Loop so that the same selection is never made twice in a row
-					while(selection == previousSelection){
-						//Randomly select one of the choices and return its index in adapterList
-						selection = Selector.makeChoice();
-					}
+					//while(selection == previousSelection){
+					//	selection = Selector.makeChoice();
+					//}
 				}
 				else{
 					selection = 0;
+					adapterList.notifyDataSetChanged();
+				    list.setSelection(selection);
 				}
-				//Retrieve the layout inflator
+				
+				//=============================================
+				//Displays toast with text of selection
+			    /*Toast no longer being used, commenting out
+				
 				LayoutInflater inflater = getActivity().getLayoutInflater();
 				//Assign the custom layout to view
 				//Parameter 1 - Custom layout XML
@@ -152,48 +158,16 @@ public class Randomize extends ActionBarActivity {
 				//Set the custom layout to Toast
 				toast.setView(layout);
 				//Display toast
-				toast.show();
+				toast.show();*/
 			}
 		}
 		
 		private void btnClearClick(){
 			adapterList.clear();
-		    adapterList.notifyDataSetChanged();
+		    //adapterList.notifyDataSetChanged();
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
-			toast.cancel();
-			hideKeyboard(getView().getWindowToken());
-		}
-		
-		private void registerClickCallback(){
-            list.setOnTouchListener(swipeDetector);
-			list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-				public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
-					hideKeyboard(getView().getWindowToken());
-					if (swipeDetector.swipeDetected()){
-	                    // do the onSwipe action
-					    adapterList.remove(adapterList.getItem(position));
-					    adapterList.notifyDataSetChanged();
-	                } else {
-	                    // do the onItemClick action
-	                }      
-				}
-			});
-			list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-		        @Override
-		        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
-		        	if (swipeDetector.swipeDetected()){
-	                    // do the onSwipe action
-		        		//swipe removes item from listview
-					    adapterList.remove(adapterList.getItem(position));
-					    adapterList.notifyDataSetChanged();
-		            } else {
-		                // do the onItemLongClick action
-		            	//pops up context menu with remove option
-		            	selectedWord = adapterList.getItem(position);
-		            }
-					return false;
-		        }
-		    });
+			//No longer used
+			//toast.cancel();
 		}
 
 		//========================================================================
@@ -209,6 +183,43 @@ public class Randomize extends ActionBarActivity {
 		
 		//=========================================================================
 		//Backend Functionality
+		
+		private void registerClickCallback(){
+            list.setOnTouchListener(swipeDetector);
+			list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+				public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id){
+					hideKeyboard(getView().getWindowToken());
+					if (swipeDetector.swipeDetected()){
+	                    // do the onSwipe action
+					    adapterList.remove(adapterList.getItem(position));
+					    selection = -1;
+					    adapterList.notifyDataSetChanged();
+	                } else {
+	                    // do the onItemClick action
+	        			hideKeyboard(getView().getWindowToken());
+	                }      
+				}
+			});
+			list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+		        @Override
+		        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
+		        	if (swipeDetector.swipeDetected()){
+	                    // do the onSwipe action
+		        		//swipe removes item from listview
+					    adapterList.remove(adapterList.getItem(position));
+					    selection = -1;
+					    adapterList.notifyDataSetChanged();
+		            } else {
+		                // do the onItemLongClick action
+		            	//pops up context menu with remove option
+		            	selectedWord = adapterList.getItem(position);
+		            	selection = position;
+					    adapterList.notifyDataSetChanged();
+		            }
+					return false;
+		        }
+		    });
+		}
 		
 		private void populateListView(View rootView){
 			
@@ -236,6 +247,8 @@ public class Randomize extends ActionBarActivity {
 		public boolean onContextItemSelected(MenuItem item) {
 			if(item.getTitle()=="Remove"){
 				adapterList.remove(selectedWord);
+				selection = -1;
+			    adapterList.notifyDataSetChanged();
 			}
 			return false;
 		}

@@ -8,6 +8,17 @@ public class Selector {
 	public static int makeChoice(){
 		return randomSelect(Randomize.PlaceholderFragment.getListCount());
 	}
+
+	//Take int input of the sample size
+	//Returns randomly-selected number from sample
+	public static int randomSelect(int size){
+		int n = -1;
+		while(n == -1){
+			//generate() returns a random integer, or -1 if error occurs
+	  		n = generate();
+		}
+		return Math.abs(n) % size;
+	}
 	
 	//Returns randomly-generated int
 		public static int generate() {
@@ -23,16 +34,5 @@ public class Selector {
 			catch (NoSuchAlgorithmException e) {
 				return -1;
 			}
-		}
-		
-		//Take int input of the sample size
-		//Returns randomly-selected number from sample
-		public static int randomSelect(int size){
-			int n = -1;
-			while(n == -1){
-				//generate() returns a random integer, or -1 if error occurs
-		  		n = generate();
-			}
-			return Math.abs(n) % size;
 		}
 }

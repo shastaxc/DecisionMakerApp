@@ -3,6 +3,7 @@ package com.dakotajordan.decisionmaker;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,16 @@ public class CustomAdapter extends ArrayAdapter<String> {
         }
         TextView text = (TextView) rowView.findViewById(R.id.text);
         text.setText(items.get(position));
+        if (position == Randomize.PlaceholderFragment.selection){
+            //TODO: set the proper selection color here:
+            rowView.setBackgroundResource(R.drawable.item_pressed);
+            text.setTextColor(Color.rgb(245,216,169));
+        }
+        else{
+            rowView.setBackgroundResource(R.drawable.item_unpressed);
+            text.setTextColor(Color.WHITE);
+        }
+        
         return rowView;
     }
 }
