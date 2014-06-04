@@ -62,12 +62,12 @@ public class CustomAdapter extends ArrayAdapter<String> {
         	holder = (ViewHolder) rowView.getTag();
             //set the proper selection color here:
             //holder.itemTextView.setBackgroundResource(R.drawable.item_pressed);
-            holder.itemTextView.setTextColor(Color.rgb(245,216,169));
+            //holder.itemTextView.setTextColor(Color.rgb(245,216,169));
         }
         else{
         	holder = (ViewHolder) rowView.getTag();
         	//holder.itemTextView.setBackgroundResource(R.drawable.item_unpressed);
-        	holder.itemTextView.setTextColor(Color.WHITE);
+        	//holder.itemTextView.setTextColor(Color.WHITE);
         }
         
         return rowView;

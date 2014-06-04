@@ -14,7 +14,7 @@
     	android:layout_marginRight="2dp"
     	android:layout_marginLeft="2dp"
     	android:textColor="@color/item_textcolor_selector"
-    	android:background="@drawable/passive_item_background"
+    	android:background="@drawable/list_selector"
     	android:id="@+id/text"/>
 
 </LinearLayout>
