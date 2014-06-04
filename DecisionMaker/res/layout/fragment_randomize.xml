@@ -89,11 +89,7 @@
             android:id="@+id/listChoices"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:fadingEdgeLength="20dp"
-            android:listSelector="@drawable/list_selector"
-    		android:clickable="true"
-    		android:focusableInTouchMode="true" >
+            android:layout_margin="5dp" >
 
         </ListView>
 

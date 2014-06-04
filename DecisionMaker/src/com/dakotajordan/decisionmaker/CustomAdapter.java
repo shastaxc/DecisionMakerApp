@@ -61,7 +61,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
             text.setTextColor(Color.rgb(245,216,169));
         }
         else{
-            rowView.setBackgroundResource(R.drawable.item_unpressed);
+            rowView.setBackgroundResource(R.drawable.item_bg_selector);
             text.setTextColor(Color.WHITE);
         }
         
