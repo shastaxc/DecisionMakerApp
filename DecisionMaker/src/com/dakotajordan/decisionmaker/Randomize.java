@@ -56,8 +56,11 @@ public class Randomize extends ActionBarActivity {
 
 		//Declare global variables
 		private final ArrayList<String> displayList = new ArrayList<String>();
+		private final ArrayList<String> displayQuickList = new ArrayList<String>();
 		protected static ArrayAdapter<String> adapterList;
+		protected static ArrayAdapter<String> adapterQuickList;
 		protected static ListView list;
+		protected static ListView quickList;
 		protected static int selection = -1;
 		protected static int previousSelection = -1;
 	    final SwipeDetector swipeDetector = new SwipeDetector();
@@ -72,6 +75,10 @@ public class Randomize extends ActionBarActivity {
 			View rootView = inflater.inflate(R.layout.fragment_randomize,
 					container, false);
 
+			//Initialize quicklist
+			displayQuickList.add("1");
+			displayQuickList.add("2");
+			
             populateListView(rootView);
             registerClickCallback();
             registerForContextMenu((ListView)rootView.findViewById(R.id.listChoices));
@@ -113,6 +120,8 @@ public class Randomize extends ActionBarActivity {
 			EditText enterChoices = (EditText)getActivity().findViewById(R.id.inputDecision);
 			String choice = enterChoices.getText().toString();
 			
+			list.setVisibility(View.VISIBLE);
+			quickList.setVisibility(View.GONE);
 			adapterList.add(choice);
 		    list.setSelection(adapterList.getCount()-1);
 		    //empty edittext box
@@ -166,6 +175,8 @@ public class Randomize extends ActionBarActivity {
 			adapterList.clear();
 		    //adapterList.notifyDataSetChanged();
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
+			list.setVisibility(View.GONE);
+			quickList.setVisibility(View.VISIBLE);
 			//No longer used
 			//toast.cancel();
 		}
@@ -228,9 +239,19 @@ public class Randomize extends ActionBarActivity {
 					getActivity(), //Context for the activity.
 					displayList); //Items to be displayed
 			
+			//Build Adapter
+			adapterQuickList = new CustomAdapter(
+					getActivity(), //Context for the activity.
+					displayQuickList); //Items to be displayed
+			
 			//configure listview
 			list = (ListView)rootView.findViewById(R.id.listChoices);
 			list.setAdapter(adapterList);
+			list.setVisibility(View.GONE);
+			
+			quickList = (ListView)rootView.findViewById(R.id.quickList);
+			quickList.setAdapter(adapterQuickList);
+			quickList.setVisibility(View.VISIBLE);
 		}
 		
 		//For other classes to see # of items in list

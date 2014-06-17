@@ -80,10 +80,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-    	android:clickable="true"
-    	android:focusableInTouchMode="true"
         android:background="#111111"
-        android:orientation="vertical" >
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal" >
 
         <ListView
             android:id="@+id/listChoices"
@@ -91,6 +91,12 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp" >
 
+        </ListView>
+
+        <ListView
+            android:id="@+id/quickList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
         </ListView>
 
     </LinearLayout>
