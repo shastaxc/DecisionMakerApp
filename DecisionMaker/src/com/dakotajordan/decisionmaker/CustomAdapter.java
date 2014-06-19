@@ -55,14 +55,40 @@ public class CustomAdapter extends ArrayAdapter<String> {
         }
         TextView text = (TextView) rowView.findViewById(R.id.text);
         text.setText(items.get(position));
-        if (position == Randomize.PlaceholderFragment.selection){
-            //TODO: set the proper selection color here:
-            rowView.setBackgroundResource(R.drawable.item_pressed);
-            text.setTextColor(Color.rgb(245,216,169));
+        if(parent.getId() == R.id.listChoices){
+            if (position == Randomize.PlaceholderFragment.selection){
+                //set the proper selection color here:
+                rowView.setBackgroundResource(R.drawable.item_pressed);
+                text.setTextColor(Color.rgb(245,216,169));
+            }
+            else{
+                rowView.setBackgroundResource(R.drawable.item_bg_selector);
+                text.setTextColor(Color.WHITE);
+            }
         }
         else{
-            rowView.setBackgroundResource(R.drawable.item_bg_selector);
-            text.setTextColor(Color.WHITE);
+        	if(position == 0){
+            	if (position == Randomize.PlaceholderFragment.selection){
+                    //set the proper selection color here:
+                    rowView.setBackgroundResource(R.drawable.quick_item1_pressed);
+                    text.setTextColor(Color.rgb(255,255,0));
+                }
+                else{
+                    rowView.setBackgroundResource(R.drawable.quick_item1_bg_selector);
+                    text.setTextColor(Color.WHITE);
+                }
+        	}
+        	else{
+        		if (position == Randomize.PlaceholderFragment.selection){
+                    //set the proper selection color here:
+                    rowView.setBackgroundResource(R.drawable.quick_item2_pressed);
+                    text.setTextColor(Color.rgb(255,255,0));
+                }
+                else{
+                    rowView.setBackgroundResource(R.drawable.quick_item2_bg_selector);
+                    text.setTextColor(Color.WHITE);
+                }
+        	}
         }
         
         return rowView;

@@ -62,7 +62,6 @@ public class Randomize extends ActionBarActivity {
 		protected static ListView list;
 		protected static ListView quickList;
 		protected static int selection = -1;
-		protected static int previousSelection = -1;
 	    final SwipeDetector swipeDetector = new SwipeDetector();
 	    //For use with context menu commands
 	    private String selectedWord;
@@ -76,8 +75,8 @@ public class Randomize extends ActionBarActivity {
 					container, false);
 
 			//Initialize quicklist
-			displayQuickList.add("1");
-			displayQuickList.add("2");
+			displayQuickList.add("1 / Yes");
+			displayQuickList.add("2 / No");
 			
             populateListView(rootView);
             registerClickCallback();
@@ -134,10 +133,15 @@ public class Randomize extends ActionBarActivity {
 			//Clear input box
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
 			
-			if(!adapterList.isEmpty()){
-				previousSelection = selection;
+			//quick list roll
+			if(adapterList.isEmpty()){
+				Shuffle.shuffleItems(quickList);
+			}
+			
+			//custom list roll
+			else{
 				if(adapterList.getCount() > 1){
-					Shuffle.shuffleItems();
+					Shuffle.shuffleItems(list);
 					//Loop so that the same selection is never made twice in a row
 					//while(selection == previousSelection){
 					//	selection = Selector.makeChoice();
@@ -148,7 +152,6 @@ public class Randomize extends ActionBarActivity {
 					adapterList.notifyDataSetChanged();
 				    list.setSelection(selection);
 				}
-				
 				//=============================================
 				//Displays toast with text of selection
 			    /*Toast no longer being used, commenting out
@@ -173,7 +176,9 @@ public class Randomize extends ActionBarActivity {
 		
 		private void btnClearClick(){
 			adapterList.clear();
-		    //adapterList.notifyDataSetChanged();
+			//Clear selection from quicklist
+	    	quickList.setSelection(-1);
+		    adapterQuickList.notifyDataSetChanged();
 			clear((EditText)getActivity().findViewById(R.id.inputDecision));
 			list.setVisibility(View.GONE);
 			quickList.setVisibility(View.VISIBLE);
@@ -255,8 +260,8 @@ public class Randomize extends ActionBarActivity {
 		}
 		
 		//For other classes to see # of items in list
-		public static int getListCount(){
-			return adapterList.getCount();
+		public static int getListCount(ArrayAdapter<String> list){
+			return list.getCount();
 		}
 		
 		@Override  

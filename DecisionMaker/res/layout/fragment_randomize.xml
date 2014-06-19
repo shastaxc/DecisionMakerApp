@@ -83,7 +83,7 @@
         android:background="#111111"
         android:clickable="true"
         android:focusableInTouchMode="true"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <ListView
             android:id="@+id/listChoices"

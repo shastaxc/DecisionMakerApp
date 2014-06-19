@@ -1096,9 +1096,15 @@ containing a value of this type.
         public static final int item_bg_selector=0x7f020062;
         public static final int item_pressed=0x7f020063;
         public static final int item_unpressed=0x7f020064;
-        public static final int passive_item_background=0x7f020065;
-        public static final int roll_pressed=0x7f020066;
-        public static final int roll_unpressed=0x7f020067;
+        public static final int passive_item_bg=0x7f020065;
+        public static final int passive_quick_item1_bg=0x7f020066;
+        public static final int passive_quick_item2_bg=0x7f020067;
+        public static final int quick_item1_bg_selector=0x7f020068;
+        public static final int quick_item1_pressed=0x7f020069;
+        public static final int quick_item2_bg_selector=0x7f02006a;
+        public static final int quick_item2_pressed=0x7f02006b;
+        public static final int roll_pressed=0x7f02006c;
+        public static final int roll_unpressed=0x7f02006d;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;

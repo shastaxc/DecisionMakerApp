@@ -3,6 +3,6 @@
     
     <item android:state_pressed="true" android:drawable="@drawable/item_pressed" />
     <item android:state_selected="true" android:drawable="@drawable/item_pressed" />
-    <item android:drawable="@drawable/passive_item_background" />
+    <item android:drawable="@drawable/passive_item_bg" />
 
 </selector>

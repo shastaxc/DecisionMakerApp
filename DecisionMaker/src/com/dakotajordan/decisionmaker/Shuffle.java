@@ -1,6 +1,7 @@
 package com.dakotajordan.decisionmaker;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 //Need to insert checks inside the runnables to limit the height that selection can increase
 //creates a shuffling/rolling effect when "roll" button is pressed
@@ -16,19 +17,14 @@ public class Shuffle {
 	private static int listSize;
 	private static int i, j, selectHolder, delay_multiplier, jCounter;
 	
-	public static void shuffleItems(){
+	public static void shuffleItems(final ListView list){
 		Handler handler = new Handler();
-		listSize = Randomize.PlaceholderFragment.getListCount();
+		listSize = list.getCount();
 		Randomize.PlaceholderFragment.selection = -1;
 		jCounter = listSize;
 		delay_multiplier = 1;
 		//Randomly select number to end on
-		selectHolder = Randomize.PlaceholderFragment.previousSelection;
-		while(selectHolder == Randomize.PlaceholderFragment.previousSelection){
-		  		selectHolder = Selector.makeChoice();
-		}
-		//Record end selection so next roll won't repeat the same value
-		Randomize.PlaceholderFragment.previousSelection = selectHolder;
+		selectHolder = Selector.makeChoice(list);
 		
 		//Begin rolling animation
 		for( i = 0; i < 4; i++){
@@ -46,10 +42,18 @@ public class Shuffle {
 				    	else{
 					    	Randomize.PlaceholderFragment.selection++;
 				    	}
-				    	//Select item on list (scrolls view to this item)
-				    	Randomize.PlaceholderFragment.list.setSelection(Randomize.PlaceholderFragment.selection);
-				    	//Change selector & update adapter (highlights selection)
-				    	Randomize.PlaceholderFragment.adapterList.notifyDataSetChanged();
+				    	if(list == Randomize.PlaceholderFragment.list){
+					    	//Select item on list (scrolls view to this item)
+					    	Randomize.PlaceholderFragment.list.setSelection(Randomize.PlaceholderFragment.selection);
+					    	//Change selector & update adapter (highlights selection)
+					    	Randomize.PlaceholderFragment.adapterList.notifyDataSetChanged();
+				    	}
+				    	else{
+					    	//Select item on list (scrolls view to this item)
+					    	Randomize.PlaceholderFragment.quickList.setSelection(Randomize.PlaceholderFragment.selection);
+					    	//Change selector & update adapter (highlights selection)
+					    	Randomize.PlaceholderFragment.adapterQuickList.notifyDataSetChanged();
+				    	}
 				    }
 				}, 100*delay_multiplier);
 				//Increment multiplier

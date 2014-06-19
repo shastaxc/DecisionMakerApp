@@ -3,10 +3,12 @@ package com.dakotajordan.decisionmaker;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import android.widget.ListView;
+
 
 public class Selector {
-	public static int makeChoice(){
-		return randomSelect(Randomize.PlaceholderFragment.getListCount());
+	public static int makeChoice(ListView list){
+		return randomSelect(list.getCount());
 	}
 
 	//Take int input of the sample size
